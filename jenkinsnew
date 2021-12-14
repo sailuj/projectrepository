@@ -7,12 +7,6 @@ pipeline{
         sh 'compile'
        }
      }
-     stage('Code quality'){
-      agent any
-      steps{
-        sh 'echo Sonarqube Code Quality Check Done'
-       }
-     }
      stage('test'){
       agent any
       steps{
