@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage("clone code"){
             steps{
-                git credentialsId: '0150992c-e728-4a81-865a-a336e007ae72', url: 'https://github.com/sailuj/simple-app.git'
+                git branch: 'main', credentialsId: '0a314e9c-8847-451f-971d-ceb51b53b892', url: 'https://github.com/sailuj/projectrepository.git'
             }
             
         }     
@@ -19,11 +19,11 @@ pipeline {
             sh label: '', script: '''rm -rf dockerimg
     mkdir dockerimg
     cd dockerimg
-    cp /var/lib/jenkins/workspace/testing_pipeline/target/simple-app-3.0.0-SNAPSHOT.war  .
+    cp /var/lib/jenkins/workspace/jenkinspipeline/target/projectrepostory.war  .
     touch dockerfile
     cat <<EOT>>dockerfile          
     FROM tomcat
-    ADD simple-app-3.0.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+    ADD projectrepostiry.war /usr/local/tomcat/webapps/
     CMD ["catalina.sh", "run"]
     EXPOSE 8080
     EOT
